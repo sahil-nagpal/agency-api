@@ -11,8 +11,13 @@ let moongoose = require('mongoose')
 let {router} = require('./src/router')
 let {jwt} = require('./passport-config')
 const server = http.createServer(app)
-console.log(">>>>>>>>>>>",process.env.MONGO_DATABASE)
-moongoose.connect(process.env.MONGO_DATABASE)
+const mongoUsername = process.env.MONGO_USERNAME
+const mongoPass = process.env.MONGO_PASSWORD
+const monoDatabase = process.env.MONGO_DATABASE
+const mongoUrl = `mongodb+srv://${mongoUsername}:${mongoPass}@cluster0.bexhm0v.mongodb.net/?retryWrites=true&w=majority`
+
+console.log(">>>>>>>>>>>",mongoUrl)
+moongoose.connect(process.env.mongoUrl,{ useNewUrlParser: true, useUnifiedTopology: true })
 
 app.use(cors())
 app.use(bodyParser.json())
