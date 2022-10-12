@@ -16,8 +16,12 @@ const mongoPass = process.env.MONGO_PASSWORD
 const monoDatabase = process.env.MONGO_DATABASE
 const mongoUrl = `mongodb+srv://${mongoUsername}:${mongoPass}@cluster0.bexhm0v.mongodb.net/?retryWrites=true&w=majority`
 
-console.log(">>>>>>>>>>>",mongoUrl)
-moongoose.connect(process.env.mongoUrl,{ useNewUrlParser: true, useUnifiedTopology: true })
+
+moongoose.connect(process.env.mongoUrl,{ useNewUrlParser: true, useUnifiedTopology: true },function(err){
+  if(err){
+    console.log("error in connecting moongoose:::",err)
+  }
+})
 
 app.use(cors())
 app.use(bodyParser.json())
