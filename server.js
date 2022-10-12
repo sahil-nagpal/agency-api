@@ -19,6 +19,7 @@ const mongoUrl = `mongodb+srv://${mongoUsername}:${mongoPass}@cluster0.bexhm0v.m
 
 moongoose.connect(mongoUrl,{ user: mongoUsername, pass: mongoPass, useNewUrlParser: true, useUnifiedTopology: true },function(err){
   if(err){
+    console.log("mongoUrl :::::",mongoUrl)
     console.log("error in connecting moongoose:::",err)
   }
 })
