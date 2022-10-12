@@ -14,10 +14,10 @@ const server = http.createServer(app)
 const mongoUsername = process.env.MONGO_USERNAME
 const mongoPass = process.env.MONGO_PASSWORD
 const monoDatabase = process.env.MONGO_DATABASE
-const mongoUrl = `mongodb+srv://${mongoUsername}:${mongoPass}@cluster0.bexhm0v.mongodb.net/?retryWrites=true&w=majority`
+const mongoUrl = `mongodb+srv://@cluster0.bexhm0v.mongodb.net/?retryWrites=true&w=majority`
 
 
-moongoose.connect(mongoUrl,{ useNewUrlParser: true, useUnifiedTopology: true },function(err){
+moongoose.connect(mongoUrl,{ user: mongoUsername, pass: mongoPass, useNewUrlParser: true, useUnifiedTopology: true },function(err){
   if(err){
     console.log("error in connecting moongoose:::",err)
   }
